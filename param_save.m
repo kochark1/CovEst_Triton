@@ -1,3 +1,5 @@
+interm_folder = strcat(matlabroot, interm_folder);
+out_folder = strcat(matlabroot, out_folder);
 if ~exist(interm_folder, 'dir')
        mkdir(interm_folder)
 end
