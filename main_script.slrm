@@ -1,0 +1,12 @@
+#!/bin/bash -l
+#SBATCH --time=00:3:00
+#SBATCH --mem=50M
+#SBATCH -o computeRQW.out
+module load matlab
+
+interm_folder = './interm';
+out_folder = './out_folder';
+
+srun matlab -nojvm -nosplash -r "computeRQW($interm_folder,$out_folder) ; exit(0)"
+
+TT = 100;
