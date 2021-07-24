@@ -4,9 +4,10 @@
 #SBATCH -o computeRQW.out
 module load matlab
 
+path = '/home/kochark1/CovEst_Triton/';
 interm_folder = 'interm';
 out_folder = 'out_folder';
 
-srun matlab -nojvm -nosplash -r "computeRQW($interm_folder,$out_folder) ; exit(0)"
+srun matlab -nojvm -nosplash -r "computeRQW($HOSTNAME, $path, $interm_folder,$out_folder) ; exit(0)"
 
 TT = 100;
