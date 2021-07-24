@@ -1,5 +1,5 @@
-interm_folder = strcat(hostname, path, interm_folder);
-out_folder = strcat(hostname, path, out_folder);
+interm_folder = strcat(path, interm_folder);
+out_folder = strcat(path, out_folder);
 if ~exist(interm_folder, 'dir')
        mkdir(interm_folder)
 end
