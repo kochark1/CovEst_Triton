@@ -10,4 +10,4 @@ out_folder='out_folder'
 
 srun matlab -nojvm -nosplash -r "disp('hi');computeRQW('$path', '$interm_folder','$out_folder') ; exit(0)"
 
-TT = 100;
+TT=100;
