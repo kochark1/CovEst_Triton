@@ -5,4 +5,4 @@
 #SBATCH --array=0-9
 TT=5
 
-matlab -nojvm -r "computeRQW($SLURM_ARRAY_TASK_ID, $TT); quit"
+matlab -nojvm -r "compute_ws($SLURM_ARRAY_TASK_ID, $TT); quit"
