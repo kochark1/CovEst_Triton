@@ -27,7 +27,7 @@ function Ws_for_each_k(NR_vec, NQ_vec, nq_set, R_sqrt_root, number_of_cells, num
     %         norm(R_est_mean-R_bar)/norm(R_bar)*100
     %         norm(Q_est_mean-Qmatrix)/norm(Qmatrix)*100
 
-            save(strcat(interm_folder,'\RQest_',string(nr), '_', string(nq),'_', string(kk), '.mat'), 'W_Est', 'W_Est_diag', 'W_Est_diag_reg');
+            save(strcat(interm_folder,'/RQest_',string(nr), '_', string(nq),'_', string(kk), '.mat'), 'W_Est', 'W_Est_diag', 'W_Est_diag_reg');
 
             [nr  nq toc]
         end
