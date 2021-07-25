@@ -5,6 +5,10 @@
 #SBATCH --array=1-10
 module load matlab
 
+path=$WRKDIR
+interm_folder='interm'
+out_folder='out_folder'
+
 TT=5
 
-matlab -nojvm -r "compute_ws($SLURM_ARRAY_TASK_ID, $TT); quit"
+matlab -nojvm -r "compute_ws('$path', '$interm_folder','$out_folder', $SLURM_ARRAY_TASK_ID, $TT); quit"
