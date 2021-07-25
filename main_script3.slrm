@@ -2,5 +2,6 @@
 #SBATCH --time=00:30:00
 #SBATCH --mem=32G
 #SBATCH -o concluded.out
+module load matlab
 
 srun matlab -nojvm -nosplash -r "disp('Finished!');exit(0)"

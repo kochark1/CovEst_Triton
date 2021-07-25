@@ -2,7 +2,9 @@
 #SBATCH --time=01:00:00
 #SBATCH --mem=32G
 #SBATCH -o w-job-%a.out
-#SBATCH --array=0-9
+#SBATCH --array=1-10
+module load matlab
+
 TT=5
 
 matlab -nojvm -r "compute_ws($SLURM_ARRAY_TASK_ID, $TT); quit"
