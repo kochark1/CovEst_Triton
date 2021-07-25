@@ -32,4 +32,5 @@ function Ws_for_each_k(NR_vec, NQ_vec, nq_set, R_sqrt_root, number_of_cells, num
             [nr  nq toc]
         end
     end
+    disp('Ws_for_each_k completed')
 end
