@@ -1,10 +1,8 @@
-interm_folder = strcat(path, interm_folder);
-out_folder = strcat(path, out_folder);
-if ~exist(interm_folder, 'dir')
-       mkdir(interm_folder)
+if ~exist(strcat(path, '/', interm_folder), 'dir')
+       mkdir(path, interm_folder)
 end
-if ~exist(out_folder, 'dir')
-       mkdir(out_folder)
+if ~exist(strcat(path, '/', out_folder), 'dir')
+       mkdir(path, out_folder)
 end
 
 delete(strcat(interm_folder,'/*.mat'));
