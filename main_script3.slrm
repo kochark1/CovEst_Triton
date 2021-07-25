@@ -1,0 +1,6 @@
+#!/bin/bash -l
+#SBATCH --time=00:30:00
+#SBATCH --mem=32G
+#SBATCH -o concluded.out
+
+srun matlab -nojvm -nosplash -r "disp('Finished!');exit(0)"

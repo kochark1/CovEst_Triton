@@ -1,0 +1,11 @@
+#!/bin/bash -l
+#SBATCH --time=00:30:00
+#SBATCH --mem=32G
+#SBATCH -o computeRQW.out
+module load matlab
+
+path=$WRKDIR
+interm_folder='interm'
+out_folder='out_folder'
+
+srun matlab -nojvm -nosplash -r "disp('Simulation started');computeRQW('$path', '$interm_folder','$out_folder'); exit(0)"
