@@ -4,6 +4,8 @@ end
 if ~exist(strcat(path, '/', out_folder), 'dir')
        mkdir(path, out_folder)
 end
+interm_folder =  strcat(path, '/', interm_folder);
+out_folder = strcat(path, '/', out_folder);
 
 delete(strcat(interm_folder,'/*.mat'));
 delete(strcat(out_folder,'/*.mat'));
