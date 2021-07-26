@@ -1,5 +1,5 @@
 tic;
-load(strcat(interm_folder,'\RQWfile.mat'));
+load(strcat(interm_folder,'/RQWfile.mat'));
 
 RR = Rmatrices(:,:,targetCell,targetUser);
 SS = diag(diag(RR));
