@@ -1,7 +1,7 @@
 load(strcat(interm_folder,'/RQWfile.mat'));
 RR = Rmatrices(:,:,targetCell, targetUser);
 
-ch_samples = 2;
+% ch_samples = 2;
 
 dim = 2;
 
@@ -158,7 +158,7 @@ for nr = 1:length(NR_vec)
     den_hat_diag_DL = (den1_hat_diag_DL_t) - num_hat_diag_DL +(1/lambda_DL);
     den_hat_diag_reg_DL = (den1_hat_diag_reg_DL_t) - num_hat_diag_reg_DL +(1/lambda_DL);
     
-    save(strcat(out_folder,'/outs_ZF_',string(nr), '_', string(nq_sim), '.mat'), 'num_hat', 'num_hat_diag','num_hat_diag_reg',...
+    save(strcat(out_folder,'/outs_ZF_',string(nr), '_', string(nq_sim), string(block_ID), '.mat'), 'num_hat', 'num_hat_diag','num_hat_diag_reg',...
         'den_hat', 'den_hat_diag', 'den_hat_diag_reg', 'num_hat_DL', 'num_hat_diag_DL', 'den_hat_diag_reg_DL', 'den_hat_DL', 'den_hat_diag_DL',...
         'den_hat_diag_reg_DL');
 
