@@ -9,5 +9,7 @@ function compute_num_sims(path, interm_folder,out_folder, block_ID, TT)
 
         nq_index = nq_index + 1;
     end
+    
+    disp('compute_num_sims Finished!');
 
 end

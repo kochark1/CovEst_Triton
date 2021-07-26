@@ -65,4 +65,3 @@ for nr = 1:length(NR_vec)
     
     [nr toc]
 end
-disp('compute_num_sims Finished!');
