@@ -7,7 +7,7 @@ ch_samples = 1000;
 
 dim = 2;
 
-SII = eye(number_of_antennas)*(1/mu);
+SII = eye(number_of_antennas)*(1/mu_val);
 ZZ_2= zeros(number_of_antennas, ch_samples);
 ZZ_3= zeros(ch_samples,1);
 ZZ_4= zeros(number_of_antennas, number_of_antennas, ch_samples);
@@ -40,8 +40,8 @@ for ii = 1:ch_samples
     sum_mat_diag=0;
     sum_mat_diag_reg=0;
     for k= 1:number_of_users
-        [s1, h1] = mmse_cal(W, number_of_antennas, dim, pilotSequenceLength, mu, h_mat(:,:,k,ii));
-        [s2, h2] = mmse_cal(W_diag, number_of_antennas, dim, pilotSequenceLength, mu, h_mat(:,:,k,ii));
+        [s1, h1] = mmse_cal(W, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
+        [s2, h2] = mmse_cal(W_diag, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
         
         if k== targetUser
             h_target = h1;
@@ -77,8 +77,8 @@ for ii = 1:ch_samples
     den1_hat_DL_t = den1_hat_DL_t + (1/ch_samples) * trace(hh * (b*b'));
     den1_hat_diag_DL_t = den1_hat_diag_DL_t + (1/ch_samples) * trace(hh * (b_diag*b_diag'));
 
-    den2_hat_t = den2_hat_t + (1/ch_samples) * (1/mu) * (v'*v);
-    den2_hat_diag_t = den2_hat_diag_t + (1/ch_samples) * (1/mu) * (v_diag'*v_diag);
+    den2_hat_t = den2_hat_t + (1/ch_samples) * (1/mu_val) * (v'*v);
+    den2_hat_diag_t = den2_hat_diag_t + (1/ch_samples) * (1/mu_val) * (v_diag'*v_diag);
 end
 
 num_hat = abs(num_hat_t)^2;

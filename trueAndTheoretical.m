@@ -1,3 +1,4 @@
+tic;
 load(strcat(interm_folder,'\RQWfile.mat'));
 
 RR = Rmatrices(:,:,targetCell,targetUser);
@@ -113,9 +114,10 @@ if ZF_FLAG
     true_ZF
 end
 
-save(strcat(out_folder,'\true_SE2.mat'), 'SE_theo', 'SE_theo_DL', 'SE_theo_diag', 'SE_theo_diag_DL',...
+save(strcat(out_folder,'/true_SE.mat'), 'SE_theo', 'SE_theo_DL', 'SE_theo_diag', 'SE_theo_diag_DL',...
     'N_thr_UL', 'N_thr_DL', 'SE_theo_diag_reg', 'SE_theo_diag_reg_DL', 'SE_const_ZF', 'SE_const_diag_ZF',...
     'SE_const_diag_reg_ZF','SE_const_DL_ZF','SE_const_diag_DL_ZF','SE_const_diag_reg_DL_ZF');
+disp('True and theoretical Done!')
 % SE_theo(nr,nq)
 % SE_theo_DL(nr,nq)
 % 
