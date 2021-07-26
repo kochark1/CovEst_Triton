@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH --time=10:00:00
-#SBATCH --mem=32G
+#SBATCH --mem=100G
 #SBATCH -o num_sims_ZF-job-%a.out
 #SBATCH --array=1-40
 module load matlab
