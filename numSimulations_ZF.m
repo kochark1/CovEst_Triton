@@ -5,7 +5,7 @@ RR = Rmatrices(:,:,targetCell, targetUser);
 
 dim = 2;
 
-SII = eye(number_of_antennas)*(1/mu);
+SII = eye(number_of_antennas)*(1/mu_val);
 ZZ_2= zeros(number_of_antennas, ch_samples);
 ZZ_3= zeros(ch_samples,1);
 ZZ_4= zeros(number_of_antennas, number_of_antennas, ch_samples);
@@ -42,9 +42,9 @@ for nr = 1:length(NR_vec)
         sum_mat_diag_reg=0;
         for k= 1:number_of_users
             load(strcat(interm_folder,'/RQest_',string(nr), '_', string(nq_sim),'_', string(k), '.mat'), 'W_Est', 'W_Est_diag','W_Est_diag_reg');
-            [s1, h1] = mmse_cal(W_Est, TT, number_of_antennas, dim, pilotSequenceLength, mu, h_mat(:,:,k,ii));
-            [s2, h2] = mmse_cal(W_Est_diag, TT, number_of_antennas, dim, pilotSequenceLength, mu, h_mat(:,:,k,ii));
-            [s3, h3] = mmse_cal(W_Est_diag_reg, TT, number_of_antennas, dim, pilotSequenceLength, mu, h_mat(:,:,k,ii));
+            [s1, h1] = mmse_cal(W_Est, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
+            [s2, h2] = mmse_cal(W_Est_diag, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
+            [s3, h3] = mmse_cal(W_Est_diag_reg, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
             clear W_Est;
             clear W_Est_diag;
             clear W_Est_diag_reg;
@@ -137,9 +137,9 @@ for nr = 1:length(NR_vec)
         den1_hat_diag_DL_t = den1_hat_diag_DL_t + (1/ch_samples) * trace(hh * Ebmat_diag(:, :, ii));
         den1_hat_diag_reg_DL_t = den1_hat_diag_reg_DL_t + (1/ch_samples) * trace(hh * Ebmat_diag_reg(:, :, ii));
         
-        den2_hat_t = den2_hat_t + (1/ch_samples) * (1/mu) * (Evv(ii));
-        den2_hat_diag_t = den2_hat_diag_t + (1/ch_samples) * (1/mu) * (Evv_diag(ii));
-        den2_hat_diag_reg_t = den2_hat_diag_reg_t + (1/ch_samples) * (1/mu) * (Evv_diag_reg(ii));
+        den2_hat_t = den2_hat_t + (1/ch_samples) * (1/mu_val) * (Evv(ii));
+        den2_hat_diag_t = den2_hat_diag_t + (1/ch_samples) * (1/mu_val) * (Evv_diag(ii));
+        den2_hat_diag_reg_t = den2_hat_diag_reg_t + (1/ch_samples) * (1/mu_val) * (Evv_diag_reg(ii));
     end
 
     num_hat = abs(num_hat_t)^2;
@@ -158,7 +158,7 @@ for nr = 1:length(NR_vec)
     den_hat_diag_DL = (den1_hat_diag_DL_t) - num_hat_diag_DL +(1/lambda_DL);
     den_hat_diag_reg_DL = (den1_hat_diag_reg_DL_t) - num_hat_diag_reg_DL +(1/lambda_DL);
     
-    save(strcat(out_folder,'/outs_ZF_',string(nr), '_', string(nq_sim), string(block_ID), '.mat'), 'num_hat', 'num_hat_diag','num_hat_diag_reg',...
+    save(strcat(out_folder,'/outs_ZF_',string(nr), '_', string(nq_sim), '_',  string(block_ID), '.mat'), 'num_hat', 'num_hat_diag','num_hat_diag_reg',...
         'den_hat', 'den_hat_diag', 'den_hat_diag_reg', 'num_hat_DL', 'num_hat_diag_DL', 'den_hat_diag_reg_DL', 'den_hat_DL', 'den_hat_diag_DL',...
         'den_hat_diag_reg_DL');
 
