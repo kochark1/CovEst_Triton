@@ -78,7 +78,7 @@ function postprocessing(path, interm_folder,out_folder)
         nq_index = nq_index + 1;
     end
     
-    save(results_folder,'/uldlResults.mat', 'NR_vec', 'ulResults', 'ulResults_diag', 'ulResults_diag_reg', 'dlResults', 'dlResults_diag', 'dlResults_diag_reg', 'N_thr_UL','N_thr_DL', 'ulResults_ZF', 'ulResults_diag_ZF', 'ulResults_diag_reg_ZF', 'dlResults_ZF', 'dlResults_diag_ZF', 'dlResults_diag_reg_ZF', 'ZF_FLAG');
+    save(strcat(results_folder,'uldlResults.mat'), 'NR_vec', 'ulResults', 'ulResults_diag', 'ulResults_diag_reg', 'dlResults', 'dlResults_diag', 'dlResults_diag_reg', 'N_thr_UL','N_thr_DL', 'ulResults_ZF', 'ulResults_diag_ZF', 'ulResults_diag_reg_ZF', 'dlResults_ZF', 'dlResults_diag_ZF', 'dlResults_diag_reg_ZF', 'ZF_FLAG');
 
     disp('postprocessing Finished!');
 end
