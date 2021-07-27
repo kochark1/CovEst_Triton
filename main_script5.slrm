@@ -10,7 +10,6 @@ interm_folder='interm'
 out_folder='out_folder'
 
 TT=500
-#ch_samples=250
-ch_samples=2
+ch_samples=250
 
 matlab -nojvm -r "compute_num_sims_ZF('$path', '$interm_folder','$out_folder', $SLURM_ARRAY_TASK_ID, $TT, $ch_samples); quit"
