@@ -5,6 +5,7 @@ function postprocessing(path, interm_folder,out_folder)
     if ~exist(strcat(path, '/', results_folder), 'dir')
        mkdir(path, results_folder)
     end
+    results_folder = strcat(path, '/', results_folder);
     
     nq_set = [1,6];
     ZF_FLAG = true;
