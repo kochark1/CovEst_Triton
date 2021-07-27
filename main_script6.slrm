@@ -1,0 +1,11 @@
+#!/bin/bash -l
+#SBATCH --time=00:30:00
+#SBATCH --mem=1G
+#SBATCH -o postprocessing.out
+module load matlab
+
+path=$WRKDIR
+interm_folder='interm'
+out_folder='out_folder'
+
+srun matlab -nojvm -nosplash -r "postprocessing('$path', '$interm_folder','$out_folder'); exit(0)"

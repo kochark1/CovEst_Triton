@@ -116,7 +116,7 @@ end
 
 save(strcat(out_folder,'/true_SE.mat'), 'SE_theo', 'SE_theo_DL', 'SE_theo_diag', 'SE_theo_diag_DL',...
     'N_thr_UL', 'N_thr_DL', 'SE_theo_diag_reg', 'SE_theo_diag_reg_DL', 'SE_const_ZF', 'SE_const_diag_ZF',...
-    'SE_const_diag_reg_ZF','SE_const_DL_ZF','SE_const_diag_DL_ZF','SE_const_diag_reg_DL_ZF');
+    'SE_const_diag_reg_ZF','SE_const_DL_ZF','SE_const_diag_DL_ZF','SE_const_diag_reg_DL_ZF', 'prelogFactor');
 disp('True and theoretical Done!')
 % SE_theo(nr,nq)
 % SE_theo_DL(nr,nq)
