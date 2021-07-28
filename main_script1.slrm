@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH --time=00:30:00
-#SBATCH --mem=32G
+#SBATCH --mem=2G
 #SBATCH -o computeRQW.out
 module load matlab
 

@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH --time=10:00:00
-#SBATCH --mem=32G
+#SBATCH --mem=2G
 #SBATCH -o w-job-%a.out
 #SBATCH --array=1-10
 module load matlab
@@ -9,6 +9,6 @@ path=$WRKDIR
 interm_folder='interm'
 out_folder='out_folder'
 
-TT=2000
+TT=50
 
 matlab -nojvm -r "compute_ws('$path', '$interm_folder','$out_folder', $SLURM_ARRAY_TASK_ID, $TT); quit"
