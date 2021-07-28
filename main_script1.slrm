@@ -4,7 +4,7 @@
 #SBATCH -o computeRQW.out
 module load matlab
 
-path=$WRKDIR
+path=pwd
 interm_folder='interm'
 out_folder='out_folder'
 
