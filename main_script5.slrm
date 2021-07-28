@@ -2,7 +2,7 @@
 #SBATCH --time=20:00:00
 #SBATCH --mem=2G
 #SBATCH -o num_sims_ZF-job-%a.out
-#SBATCH --array=1-2
+#SBATCH --array=1-10
 module load matlab
 
 path=$WRKDIR
@@ -10,6 +10,6 @@ interm_folder='interm'
 out_folder='out_folder'
 
 TT=50
-ch_samples=500
+ch_samples=50
 
 matlab -nojvm -r "compute_num_sims_ZF('$path', '$interm_folder','$out_folder', $SLURM_ARRAY_TASK_ID, $TT, $ch_samples); quit"
