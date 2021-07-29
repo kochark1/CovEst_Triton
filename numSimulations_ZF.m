@@ -15,6 +15,9 @@ for nr = 1:length(NR_vec)
     clear W_Est_diag;
     clear W_Est_diag_reg;
     
+    rng shuffle;
+    reset(RandStream.getDefaultStream,sum(100*clock));
+    
     h_mat = generateh(R_sqrt_root,number_of_antennas,number_of_cells,number_of_users,ch_samples); %  (M, L, K, ch_samples)
     
     Ev = ZZ_2;

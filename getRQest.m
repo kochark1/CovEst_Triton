@@ -4,6 +4,9 @@ N2 = crandn(M, pilotSequenceLength, NR);
 phiConj = conj(phi(:, targetCell, targetUser)); % conj(p_{u}), conjugate of the target user ChEst pilot.
 
 R_est = 0;
+
+rng shuffle;
+reset(RandStream.getDefaultStream,sum(100*clock));
 hj = generateh(R_sqr_root,M,L,K,NR); % generate channel vectors for all the users to the BS j (targetCell), here hj is M X NR X L X K tensor.
 %hj(:, n, l, k) is the channel h_{jlk}[n] in the paper.
 for n = 1:NR
