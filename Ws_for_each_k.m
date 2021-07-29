@@ -1,7 +1,7 @@
 function Ws_for_each_k(NR_vec, NQ_vec, nq_set, R_sqrt_root, number_of_cells, number_of_users, number_of_antennas, targetCell, kk, pilotSequenceLength, mu, phi, alpha_R, alpha_Q, Rb, TT, Pb, interm_folder)
     tic;
     rng shuffle;
-    reset(RandStream.getDefaultStream,sum(100*clock));
+    reset(RandStream.setGlobalStream ,sum(100*clock));
     % compute a set of TT =500 number of covariance estimates for different NQ and NR values 
     for nr = 1:length(NR_vec)
         for nq = nq_set
