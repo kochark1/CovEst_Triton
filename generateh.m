@@ -1,4 +1,5 @@
 function hj = generateh(R_sqr_root,M,L,K,N)
+rng shuffle;
 h = crandn(M, N, L, K);
 for l = 1:L
     for k = 1:K

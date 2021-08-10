@@ -184,6 +184,7 @@ function [sum_mat, h_out]= mmse_cal(W_Est, TT, number_of_antennas, dim, P, mu, h
 %     h_mat is of size (M,L)
     for tt = 1:TT
         W_est = W_Est(:,:,tt);
+        rng shuffle;
 
         h_LS = sum(h_mat, dim) + (1/sqrt(P*mu)) * crandn(number_of_antennas,1);
 
