@@ -45,9 +45,9 @@ for nr = 1:length(NR_vec)
         sum_mat_diag_reg=0;
         for k= 1:number_of_users
             load(strcat(interm_folder,'/RQest_',string(nr), '_', string(nq_sim),'_', string(k), '.mat'), 'W_Est', 'W_Est_diag','W_Est_diag_reg');
-            [s1, h1] = mmse_cal(W_Est, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
-            [s2, h2] = mmse_cal(W_Est_diag, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
-            [s3, h3] = mmse_cal(W_Est_diag_reg, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
+            [s1, h1] = mmse_cal(W_Est, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii), Wmatrix);
+            [s2, h2] = mmse_cal(W_Est_diag, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii), Wmatrix);
+            [s3, h3] = mmse_cal(W_Est_diag_reg, TT, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii), Wmatrix);
             clear W_Est;
             clear W_Est_diag;
             clear W_Est_diag_reg;
@@ -180,10 +180,11 @@ function v_or_b = compute_v_or_b(pre_mat, h_target, SII, ULDL_flag)
     end
 end
 
-function [sum_mat, h_out]= mmse_cal(W_Est, TT, number_of_antennas, dim, P, mu, h_mat)
+function [sum_mat, h_out]= mmse_cal(W_Est, TT, number_of_antennas, dim, P, mu, h_mat, Wmatrix)
 %     h_mat is of size (M,L)
     for tt = 1:TT
         W_est = W_Est(:,:,tt);
+        W_est = Wmatrix;
         rng shuffle;
 
         h_LS = sum(h_mat, dim) + (1/sqrt(P*mu)) * crandn(number_of_antennas,1);
