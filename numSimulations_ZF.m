@@ -182,12 +182,12 @@ end
 
 function [sum_mat, h_out]= mmse_cal(W_Est, TT, number_of_antennas, dim, P, mu, h_mat, Wmatrix)
 %     h_mat is of size (M,L)
+    rng shuffle;
+
+    h_LS = sum(h_mat, dim) + (1/sqrt(P*mu)) * crandn(number_of_antennas,1);
     for tt = 1:TT
         W_est = W_Est(:,:,tt);
         W_est = Wmatrix;
-        rng shuffle;
-
-        h_LS = sum(h_mat, dim) + (1/sqrt(P*mu)) * crandn(number_of_antennas,1);
 
         h_mmse = W_est*h_LS;
         sum_mat(:,:,tt) = h_mmse*h_mmse'; % sum over k
