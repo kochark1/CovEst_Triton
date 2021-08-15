@@ -1,11 +1,12 @@
 function [R_est, Q_est]= getRQest(R_sqr_root, L, K, M, targetCell, targetUser, pilotSequenceLength, NR, NQ,  mu, phi, alpha_R, Rb)
+rng shuffle;
 N1 = crandn(M, pilotSequenceLength, NR);
+rng shuffle;
 N2 = crandn(M, pilotSequenceLength, NR);
 phiConj = conj(phi(:, targetCell, targetUser)); % conj(p_{u}), conjugate of the target user ChEst pilot.
 
 R_est = 0;
 
-rng shuffle;
 hj = generateh(R_sqr_root,M,L,K,NR); % generate channel vectors for all the users to the BS j (targetCell), here hj is M X NR X L X K tensor.
 %hj(:, n, l, k) is the channel h_{jlk}[n] in the paper.
 for n = 1:NR
@@ -36,6 +37,7 @@ R_est = alpha_R*R_est+(1-alpha_R)*Rb;
 
 % Similarly, we generate Q matrix from a different set of NQ ChEst pilots.
 Q_est = 0;
+rng shuffle;
 N = crandn(M, pilotSequenceLength, NQ);
 hj = generateh(R_sqr_root,M,L,K,NQ);
 for n = 1:NQ
