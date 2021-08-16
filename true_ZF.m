@@ -117,6 +117,7 @@ function v_or_b = compute_v_or_b(pre_mat, h_target, SII, ULDL_flag)
 end
 
 function [sum_mat, h_out]= mmse_cal(W, number_of_antennas, dim, P, mu, h_mat)
+    rng shuffle;
 
     h_LS = sum(h_mat, dim) + (1/sqrt(P*mu)) * crandn(number_of_antennas,1);
 
