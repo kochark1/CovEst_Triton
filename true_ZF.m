@@ -1,9 +1,6 @@
 load(strcat(interm_folder,'/RQWfile.mat'));
-RR = Rmatrices(:,:,targetCell, targetUser);
 
-W = RR/Qmatrix;
-
-ch_samples = 1000;
+ch_samples = 2000;
 
 dim = 2;
 
@@ -40,7 +37,7 @@ for ii = 1:ch_samples
     sum_mat_diag=0;
     sum_mat_diag_reg=0;
     for k= 1:number_of_users
-        [s1, h1] = mmse_cal(W, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
+        [s1, h1] = mmse_cal(Wmatrix, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
         [s2, h2] = mmse_cal(W_diag, number_of_antennas, dim, pilotSequenceLength, mu_val, h_mat(:,:,k,ii));
         
         if k== targetUser
