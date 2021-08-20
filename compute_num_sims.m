@@ -5,7 +5,7 @@ function compute_num_sims(path, interm_folder,out_folder, block_ID, TT)
     
     nq_index = 1;
     for nq_sim = nq_set
-        numSimulations;
+        numSimulations_new;
 
         nq_index = nq_index + 1;
     end

@@ -8,7 +8,7 @@ function compute_num_sims_ZF(path, interm_folder,out_folder, block_ID, TT, ch_sa
     nq_index = 1;
     if ZF_FLAG
         for nq_sim = nq_set
-            numSimulations_ZF;
+            numSimulations_ZF_new;
             
             nq_index = nq_index + 1;
         end
