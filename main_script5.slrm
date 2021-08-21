@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --time=5:00:00
+#SBATCH --time=8:00:00
 #SBATCH --mem=1G
 #SBATCH -o num_sims_ZF-job-%a.out
 #SBATCH --array=1-100
@@ -10,6 +10,6 @@ interm_folder='interm'
 out_folder='out_folder'
 
 TT=500
-ch_samples=50
+ch_samples=100
 
 matlab -nojvm -r "compute_num_sims_ZF('$path', '$interm_folder','$out_folder', $SLURM_ARRAY_TASK_ID, $TT, $ch_samples); quit"

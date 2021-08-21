@@ -155,8 +155,8 @@ for nr = 1:length(NR_vec)
 end
 
 function v_or_b = compute_v_or_b(pre_mat, h_target, SII, ULDL_flag)
-%     v = (pre_mat+SII)\h_target;
-    v = h_target;
+    v = (pre_mat+SII)\h_target;
+%     v = h_target;
     const = 1; % TODO
     if ULDL_flag == 0
         v_or_b = v;
