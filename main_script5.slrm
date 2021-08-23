@@ -9,7 +9,7 @@ path=pwd
 interm_folder='interm'
 out_folder='out_folder'
 
-TT=500
+TT=50
 ch_samples=100
 
 matlab -nojvm -r "compute_num_sims_ZF('$path', '$interm_folder','$out_folder', $SLURM_ARRAY_TASK_ID, $TT, $ch_samples); quit"
