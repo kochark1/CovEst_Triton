@@ -1,5 +1,8 @@
 tic;
+interm_folder_backup = interm_folder;
 load(strcat(interm_folder,'/RQWfile.mat'));
+[interm_folder, interm_folder_backup]
+interm_folder = interm_folder_backup ;
 RR = Rmatrices(:,:,targetCell, targetUser);
 
 % ch_samples = 2;
