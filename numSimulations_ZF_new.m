@@ -1,8 +1,6 @@
 tic;
 interm_folder_backup = interm_folder;
 load(strcat(interm_folder,'/RQWfile.mat'));
-[interm_folder, interm_folder_backup]
-interm_folder = interm_folder_backup ;
 RR = Rmatrices(:,:,targetCell, targetUser);
 
 % ch_samples = 2;
@@ -41,6 +39,7 @@ for nr = 1:length(NR_vec)
     Ebmat = ZZ_4;
     Ebmat_diag = ZZ_4;
     Ebmat_diag_reg = ZZ_4;
+    trace_sum_mat = 0;
     
     for ii = 1:ch_samples
         sum_mat=0;
@@ -63,6 +62,7 @@ for nr = 1:length(NR_vec)
             sum_mat_diag = sum_mat_diag + s2;
             sum_mat_diag_reg = sum_mat_diag_reg + s3;
         end
+        trace_sum_mat = trace_sum_mat + (1/ch_samples)*sum(sum_mat(:));
         
         for tt = 1:TT 
             v = compute_v_or_b(sum_mat(:,:,tt), h_target(:,tt), SII, 0); % M, 1
@@ -146,6 +146,22 @@ for nr = 1:length(NR_vec)
         den2_hat = den2_hat + (1/ch_samples) * (1/mu_val) * (Evv(ii));
         den2_hat_diag = den2_hat_diag + (1/ch_samples) * (1/mu_val) * (Evv_diag(ii));
         den2_hat_diag_reg = den2_hat_diag_reg + (1/ch_samples) * (1/mu_val) * (Evv_diag_reg(ii));
+    end
+    if nr==5 && nq_sim==6
+        trace_Ev = sum(mean(Ev, 2));
+        if abs(den1_hat)>10
+            disp('--------------------');
+            disp('block_ID', string(block_ID));
+            disp('trace_sum_mat', string(trace_sum_mat));
+            disp('trace_Ev', string(trace_Ev));
+            disp('den1_hat', string(sum(den1_hat(:))));
+        elseif abs(den1_hat)>0.9 && abs(den1_hat)< 2
+            disp('--------------------');
+            disp('block_ID', string(block_ID));
+            disp('trace_sum_mat', string(trace_sum_mat));
+            disp('trace_Ev', string(trace_Ev));
+            disp('den1_hat', string(sum(den1_hat(:))));
+        end
     end
 
     
